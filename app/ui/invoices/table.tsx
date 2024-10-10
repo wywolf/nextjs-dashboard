@@ -8,8 +8,8 @@ export default async function InvoicesTable({
   query,
   currentPage,
 }: {
-  query: string;
-  currentPage: number;
+  query: string; // 查询字符串，用于过滤发票
+  currentPage: number; // 当前页码，用于分页
 }) {
   const invoices = await fetchFilteredInvoices(query, currentPage);
 
@@ -80,7 +80,7 @@ export default async function InvoicesTable({
             <tbody className="bg-white">
               {invoices?.map((invoice) => (
                 <tr
-                  key={invoice.id}
+                  key={invoice.id} // 使用发票ID作为唯一键
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
@@ -109,8 +109,8 @@ export default async function InvoicesTable({
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
-                      <UpdateInvoice id={invoice.id} />
-                      <DeleteInvoice id={invoice.id} />
+                      <UpdateInvoice id={invoice.id} /> {/* 更新发票按钮 */}
+                      <DeleteInvoice id={invoice.id} /> {/* 删除发票按钮 */}
                     </div>
                   </td>
                 </tr>
